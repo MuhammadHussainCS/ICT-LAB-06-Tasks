@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="icon" type="image/png" href="image.png">
+
+    <style>
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        main {
+            max-width: 1050px;
+            margin: 35px auto;
+            padding: 25px;
+        }
+
+        /* =========================
+        MAIN PAGE HEADING
+        ========================= */
+        h1 {
+            text-align: center;
+            color: #0f172a;
+            font-size: clamp(30px, 5vw, 42px);
+            letter-spacing: 1px;
+            margin: 0 0 30px;
+        }
+
+        h2 {
+            color: #0f766e;
+            font-size: 23px;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #99f6e4;
+        }
+
+        h3 {
+            color: #0f172a;
+        }
+
+        h4 {
+            color: #0f766e;
+        }
+
+        header {
+            background-color: #0f172a;
+            padding: 18px 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #5eead4;
+        }
+
+        section {
+            background-color: #ffffff;
+            margin-bottom: 25px;
+            padding: 28px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+            transition: box-shadow 0.25s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.09);
+        }
+
+        section a {
+            color: #0f766e;
+            transition: color 0.2s ease;
+        }
+
+        section a:hover {
+            color: #115e59;
+        }
+
+        #personalInfo {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            padding: 35px;
+            text-align: left;
+            background: linear-gradient(135deg, #ffffff, #f0fdfa);
+            border-top: 5px solid #0f766e;
+        }
+
+        #personalInfo .profile-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        #personalInfo h2 {
+            margin-top: 0;
+        }
+
+        #personalInfo h3 {
+            font-size: 30px;
+            color: #0f172a;
+            margin: 12px 0 4px;
+        }
+
+        #personalInfo h4 {
+            color: #0f766e;
+            font-size: 18px;
+            margin: 0 0 15px;
+            font-weight: 600;
+        }
+
+        #personalInfo p {
+            margin: 8px 0;
+            overflow-wrap: anywhere;
+        }
+
+        #personalInfo a {
+            color: #334155;
+            text-decoration: none;
+        }
+
+        #personalInfo a:hover {
+            color: #0f766e;
+            text-decoration: underline;
+        }
+
+        #personalInfo .profile-image {
+            flex: 0 0 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profilePic {
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 25%;
+            border: 4px solid #99f6e4;
+            box-shadow: 0 8px 24px rgba(15, 118, 110, 0.18);
+            display: block;
+            margin: 0;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        li h4 {
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0 25px;
+            background-color: #ffffff;
+        }
+
+        caption {
+            color: #0f172a;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th,
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 13px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0f766e;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0fdfa;
+        }
+
+        tr:hover {
+            background-color: #ccfbf1;
+        }
+
+        /* =========================
+        GENERAL IMAGES
+        ========================= */
+        img {
+            max-width: 100%;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        /* =========================
+        SOCIAL ACCOUNTS
+        ========================= */
+        .social-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        #socialAccounts a {
+            display: inline-block;
+            margin-right: 18px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #socialAccounts a h4 {
+            display: inline-block;
+            margin: 8px 0;
+        }
+
+
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 22px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 700px) {
+            main {
+                margin: 18px auto;
+                padding: 12px;
+            }
+
+            section {
+                padding: 20px 16px;
+                border-radius: 10px;
+            }
+
+            nav {
+                gap: 10px 14px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            h1 {
+                margin-bottom: 22px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            #personalInfo {
+                gap: 15px;
+                padding: 22px 16px;
+            }
+
+            #personalInfo .profile-image {
+                flex: 0 0 100px;
+            }
+
+            #personalInfo .profilePic {
+                width: 95px;
+                height: 95px;
+            }
+
+            #personalInfo h3 {
+                font-size: 21px;
+            }
+
+            #personalInfo h4 {
+                font-size: 15px;
+            }
+
+            #personalInfo p,
+            #personalInfo a {
+                font-size: 12px;
+            }
+
+            th,
+            td {
+                padding: 9px 8px;
+                font-size: 13px;
+            }
+
+            #socialAccounts a {
+                margin-right: 10px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #personalInfo {
+                gap: 10px;
+                padding: 18px 12px;
+            }
+
+            #personalInfo .profile-image {
+                flex-basis: 75px;
+            }
+
+            #personalInfo .profilePic {
+                width: 72px;
+                height: 72px;
+            }
+
+            #personalInfo h3 {
+                font-size: 18px;
+            }
+
+            #personalInfo p,
+            #personalInfo a {
+                font-size: 11px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#personalInfo">Personal Info</a>
+            <a href="#carrerObjective">Career Objective</a>
+            <a href="#education">Eduction</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experice</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Resume</h1>
+        
+            <section id="personalInfo">
+                <div class="profile-details">
+                    <h2>Personal Information</h2>
+                    <h3>Muhammad Hussain</h3>
+                    <h4>AI Engineer</h4>
+
+                    <p>
+                        <a href="mailto:mhussain.dev.cs@gmail.com">
+                            mhussain.dev.cs@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        <a href="tel:+923218706244">
+                            +92 321 8706244
+                        </a>
+                    </p>
+
+                    <p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Karachi%2C+Pakistan"
+                        target="_blank">
+                            Karachi, Pakistan
+                        </a>
+                    </p>
+                </div>
+
+                <div class="profile-image">
+                    <img src="profilePic.png"
+                        alt="Muhammad Hussain"
+                        class="profilePic">
+                </div>
+            </section>
+
+
+            <section id="carrerObjective">
+                <h2>Career Objective:</h2>
+                <p>Dedicated and analytical AI Engineer with a strong foundation in computer science, machine learning algorithms, and software development. Proficient in Python, data structures, and integrating pre-trained models or APIs to build intelligent applications. Eager to leverage problem-solving skills and a passion for emerging technologies to contribute to scalable AI and automation solutions in a dynamic team.</p>
+            </section>
+
+            <section id="education">
+                <h2>Eduction:</h2>
+                <ul>
+                    <li>
+                        <h4>Bachelor of Science in Computer Science</h4>
+                        <p>FAST NUCES — Karachi, Pakistan</p>
+                        <p>June 2030</p> 
+                    </li>
+                    <li>
+                        <h4>Intermediate in Computer Science</h4>
+                        <p>BAHRIA COLLEGE KARSAZ — Karachi, Pakistan</p>
+                        <p>June 2026</p> 
+                    </li>
+                    <li>
+                        <h4>Matriculation in Computer Science</h4>
+                        <p>AL-EMAN EDUCATION SYSTEM — Karachi, Pakistan</p>
+                        <p>June 2024</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="skills">  
+                <h2>Skills:</h2> 
+                <table border="1px"> 
+                    <caption>Technical Skills</caption>
+
+                    <thead>
+                        <tr>
+                                <th>Technical Skills</th>
+                                <th>Proficiency Level</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>C Programming</td>
+                            <td>Intermediate</td>
+                        </tr>
+
+                        <tr>
+                            <td>HTML</td>
+                            <td>Advance</td>
+                        </tr>
+
+                        <tr>
+                            <td>CSS</td>
+                            <td>Beginner</td>
+                        </tr>
+                    </tbody>
+                            
+                </table>
+
+                <table border="1px">
+                    <caption>Communication Skills</caption>
+
+                    <thead>
+                        <tr>
+                            <th>Soft Skills</th>
+                            <th>Proficiency Level</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Communication</td>
+                            <td>Good</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Teamwork</td>
+                            <td>Good</td>
+                        </tr>
+
+                        <tr>
+                            <td>Time Management</td>
+                            <td>Good</td>
+                        </tr>
+
+                        <tr>
+                            <td>Critical Thinking</td>
+                            <td>Good</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adaptability</td>
+                            <td>Good</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="projects">
+                <h2>Projects:</h2>
+                <ul>
+                    <h4>Student Result Management System</h4>
+                    <li>
+                        Description: Developed a C-based application to process student academic records, calculate total and average marks, and determine grades and examination outcomes.
+                    </li>
+                    <li>
+                        Technologies: C Programming
+                    </li>
+                    <li>
+                        Type: Academic Project
+                    </li>
+                </ul>
+
+                <ul>
+                    <h4>Personal Portfolio Website</h4>
+                    <li>
+                        Description: Designed a personal portfolio website to showcase academic qualifications, technical competencies, projects, and contact details using a structured and visually consistent layout.
+                    </li>
+                    <li>
+                        Technologies: HTML, CSS
+                    </li>
+                    <li>
+                        Type: Personal Project
+                    </li>
+                </ul>
+            </section>
+
+            <section id="experience">
+                <h2>Work Experience:</h2>
+                <h4>Junior AI Engineer</h4>
+                <p>NexusSol Technologies (Pvt.) Ltd. — Karachi, Pakistan</p>
+                <p>June 2025 - Present</p>
+                <ul>
+                    <li>
+                        <b>Architected and deployed </b>
+                        production-ready RAG (Retrieval-Augmented Generation) pipelines using Python, LangChain, and Pinecone, reducing customer query response time by 35%.
+                    </li>
+                    <li>
+                        <b>Fine-tuned and integrated </b>
+                        open-source LLMs (Llama 3 / Mistral) via Hugging Face and FastAPI microservices, connecting them seamlessly to backend Node.js applications.
+                    </li>
+                    <li>
+                        <b>Optimized database queries and data ingestion workflows </b>
+                        using Pandas and PostgreSQL, handling over 50,000 daily unstructured text logs efficiently.
+                    </li>
+                    <li>
+                        <b>Collaborated with cross-functional teams </b>
+                        using Git and GitHub for version control, participating in code reviews and agile sprint planning.
+                    </li>
+                </ul>
+
+                
+                <h4>AI / Backend Development Intern</h4>
+                <p>CodeAlpha Solutions — Karachi, Pakistan</p>
+                <p>January 2025 - May 2025</p>
+                <ul>
+                    <li>
+                        <b>Architected and deployed </b>
+                        production-ready RAG (Retrieval-Augmented Generation) pipelines using Python, LangChain, and Pinecone, reducing customer query response time by 35%.
+                    </li>
+                    <li>
+                        <b>Fine-tuned and integrated </b>
+                        open-source LLMs (Llama 3 / Mistral) via Hugging Face and FastAPI microservices, connecting them seamlessly to backend Node.js applications.
+                    </li>
+                    <li>
+                        <b>Optimized database queries and data ingestion workflows </b>
+                        using Pandas and PostgreSQL, handling over 50,000 daily unstructured text logs efficiently.
+                    </li>
+                    <li>
+                        <b>Collaborated with cross-functional teams </b>
+                        using Git and GitHub for version control, participating in code reviews and agile sprint planning.
+                    </li>
+                </ul>
+            </section>
+
+            <section id="certifications">
+                <h2>Certifications & Achievements:</h2>
+                <ul>
+                    <h4>Introduction to C Programming</h4>
+                    <li>
+                        Issuing Organization: Cisco Networking Academy
+                    </li>
+                    <li>
+                        Year: 2026
+                    </li>
+                </ul>
+
+                <ul>
+                    <h4>Responsive Web Design</h4>
+                    <li>
+                        Issuing Organization: freeCodeCamp
+                    </li>
+                    <li>
+                        Year: 2026
+                    </li>
+                </ul>
+
+                <ul>
+                    <h4>Programming Fundamentals Achievement</h4>
+                    <li>
+                        Achievement: Successfully developed a Student Result Management System using C programming concepts.
+                    </li>
+                    <li>
+                        Year: 2026
+                    </li>
+                </ul>
+            </section>
+
+            <section id="socialAccounts">
+                <h2>Social Accounts:</h2>
+
+                <img src="github.png" alt="Github logo" class="social-logo">
+                <a href="https://github.com/MuhammadHussainCS" target="_blank"><h4>Github</h4></a>
+
+                <img src="linkedin.png" alt="Linkedin Logo" class="social-logo">
+                <a href="https://pk.linkedin.com/" target="_blank"><h4>Linkedin</h4></a>
+
+                <img src="facebook.png" alt="Facebook Logo" class="social-logo">
+                <a href="https://www.facebook.com/"><h4>Facebook</h4></a>
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Muhammad Hussain. All rights Reserved</p>
+    </footer>
+</body>
+</html>
